@@ -23,5 +23,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: blopker/djdt_flamegraph
+    repo: 23andme/djdt_flamegraph
     condition: $TOXENV == py27
