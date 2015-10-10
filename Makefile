@@ -7,6 +7,8 @@ endef
 
 VERSION ?= $(shell python -c '$(VERSION_SCR)')
 
+all: test
+
 clean: clean-build clean-pyc clean-test
 
 clean-build:
