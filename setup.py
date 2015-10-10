@@ -27,7 +27,6 @@ setup(
     ],
     package_dir={'djdt_flamegraph':
                  'djdt_flamegraph'},
-    include_package_data=True,
     license='MIT',
     zip_safe=False,
     keywords='djdt_flamegraph',
