@@ -29,6 +29,7 @@ setup(
                  'djdt_flamegraph'},
     license='MIT',
     zip_safe=False,
+    include_package_data=True,
     keywords='djdt_flamegraph',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
