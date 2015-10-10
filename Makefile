@@ -29,9 +29,6 @@ lint:
 	flake8 djdt_flamegraph tests
 
 test:
-	python setup.py test
-
-test-all:
 	tox
 
 tag:

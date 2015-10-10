@@ -1,18 +1,26 @@
 import collections
 import signal
 
-from debug_toolbar.panels import Panel
-
 from . import flamegraph
+
+try:
+    from debug_toolbar.panels import Panel
+except ImportError as e:
+    import os
+    if os.environ.get('TESTING'):
+        import mock
+        Panel = mock.Mock()
+    else:
+        raise e
 
 
 class FlamegraphPanel(Panel):
-    """
-    Lightweigh profiling baby!
-    """
-
-    title = "Flamegraph"
+    title = 'Flamegraph'
     template = 'debug_toolbar/panels/flamegraph.dtml'
+
+    @property
+    def enabled(self):
+        return self.toolbar.request.COOKIES.get('djdt' + self.panel_id, 'off') == 'on'
 
     def enable_instrumentation(self):
         self.sampler = Sampler()

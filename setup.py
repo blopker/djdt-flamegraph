@@ -14,14 +14,6 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read().replace('.. :changelog:', '')
 
-requirements = [
-    # TODO: put package requirements here
-]
-
-test_requirements = [
-    # TODO: put package test requirements here
-]
-
 setup(
     name='djdt_flamegraph',
     version='0.1.0',
@@ -36,7 +28,6 @@ setup(
     package_dir={'djdt_flamegraph':
                  'djdt_flamegraph'},
     include_package_data=True,
-    install_requires=requirements,
     license='MIT',
     zip_safe=False,
     keywords='djdt_flamegraph',
@@ -48,7 +39,5 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
-    ],
-    test_suite='tests',
-    tests_require=test_requirements
+    ]
 )

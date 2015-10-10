@@ -2,6 +2,8 @@
 DjDT Flamegraph
 ===============================
 
+Under construction...
+
 .. image:: https://img.shields.io/travis/23andme/djdt_flamegraph.svg
         :target: https://travis-ci.org/blopker/djdt_flamegraph
 
