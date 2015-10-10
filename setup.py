@@ -16,7 +16,7 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     name='djdt_flamegraph',
-    version='0.1.0',
+    version='0.1.1',
     description='Python Boilerplate contains all the boilerplate you need to create a Python package.',
     long_description=readme + '\n\n' + history,
     author='Bo Lopker',
