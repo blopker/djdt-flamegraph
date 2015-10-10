@@ -1,13 +1,7 @@
+sudo: false
 language: python
-
-python:
-  - TOXENV=py34
-  - TOXENV=py27
-
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox
-
-# command to run tests, e.g. python setup.py test
+install:
+  - pip install tox
 script: tox
 
 # After you create the Github repo and add it to Travis, run the
