@@ -4,7 +4,7 @@ DjDT Flamegraph
 
 Under construction...
 
-.. image:: https://img.shields.io/travis/23andme/djdt-flamegraph.svg
+.. image:: https://travis-ci.org/23andMe/djdt-flamegraph.svg?branch=master
         :target: https://travis-ci.org/blopker/djdt-flamegraph
 
 .. image:: https://img.shields.io/pypi/v/djdt_flamegraph.svg
