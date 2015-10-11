@@ -43,11 +43,15 @@ lint:
 	flake8 djdt_flamegraph tests
 
 test:
-	tox
+	tox -e py27
 
 tag:
-	- tox
 	git tag $(VERSION)
+
+release:
+	@$(MAKE) test
+	@$(MAKE) tag
+	git push
 
 coverage:
 	coverage run --source djdt_flamegraph setup.py test
