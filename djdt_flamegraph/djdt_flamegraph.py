@@ -1,8 +1,6 @@
 import collections
 import signal
 
-from django.template import Engine, Context
-
 from . import flamegraph
 
 try:
