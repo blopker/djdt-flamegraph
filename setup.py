@@ -16,7 +16,7 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     name='djdt_flamegraph',
-    version='0.1.5',
+    version='0.2.0',
     description='Flamegraphs for Django Debug Toolbar',
     long_description=readme + '\n\n' + history,
     author='Bo Lopker',
@@ -32,7 +32,7 @@ setup(
     include_package_data=True,
     keywords='djdt_flamegraph',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Programming Language :: Python :: 2',
