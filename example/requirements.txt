@@ -1,5 +1,2 @@
-mock
-pytest
-pytest-cov
 django
 django-debug-toolbar

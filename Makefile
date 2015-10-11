@@ -1,4 +1,4 @@
-.PHONY: clean-pyc clean-build clean
+.PHONY: clean-pyc clean-build clean example
 
 define VERSION_SCR
 import pkg_resources
@@ -6,10 +6,22 @@ print(pkg_resources.require("djdt_flamegraph")[0].version)
 endef
 
 VERSION ?= $(shell python -c '$(VERSION_SCR)')
+EXBIN = example/env/bin
 
 all: test
 
+example: example/env
+	$(EXBIN)/python example/manage.py runserver --nothreading --noreload
+
+example/env:
+	virtualenv example/env
+	$(EXBIN)/pip install -r example/requirements.txt
+	$(EXBIN)/pip install -e `pwd`
+	$(EXBIN)/python example/manage.py migrate
+
 clean: clean-build clean-pyc clean-test
+	rm -rf example/env
+	rm example/db.sqlite3
 
 clean-build:
 	rm -fr build/
