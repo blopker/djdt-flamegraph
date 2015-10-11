@@ -1,6 +1,11 @@
+
 ===============================
 DjDT Flamegraph
 ===============================
+
+.. image:: https://raw.githubusercontent.com/23andMe/djdt-flamegraph/master/fireman.png
+
+Get a flamegraph of the current request, right in Django.
 
 .. image:: https://travis-ci.org/23andMe/djdt-flamegraph.svg?branch=master
         :target: https://travis-ci.org/blopker/djdt-flamegraph
@@ -8,15 +13,20 @@ DjDT Flamegraph
 .. image:: https://img.shields.io/pypi/v/djdt_flamegraph.svg
         :target: https://pypi.python.org/pypi/djdt_flamegraph
 
-
-
-.. image:: https://raw.githubusercontent.com/23andMe/djdt-flamegraph/master/fireman.png
-
-Get a flamegraph of the current request, right in Django.
+Screenshot
+----------
 
 .. image:: https://raw.githubusercontent.com/23andMe/djdt-flamegraph/master/flamegraph-screenshot.png
 
 Features
 --------
 
-* FLAMES
+* Uses https://github.com/brendangregg/FlameGraph to generate a flamegraph right in a debug panel.
+
+Install
+-------
+* Add `djdt_flamegraph` to your requirements.txt.
+* Add `djdt_flamegraph.FlamegraphPanel` to `DEBUG_TOOLBAR_PANELS`
+* Flame on!
+
+Note: Flamegraph is disabled by default. You'll have to enable it by clicking the checkbox next to it in the Debug Toolbar.
