@@ -16,8 +16,17 @@ except ImportError as e:
         raise e
 
 template = r"""
+<style>
+    #FlamegraphPanel .djDebugPanelContent { padding:0; }
+</style>
 <template id="djdt-flamegraph-tpl">
+    <style>
+        body {margin: 0;}
+    </style>
     {{ flamegraph|safe }}
+    <script>
+        init();
+    </script>
 </template>
 <iframe id="djdt-flamegraph-iframe" style="width:100%;height:100%;" src="about:blank">
 </iframe>

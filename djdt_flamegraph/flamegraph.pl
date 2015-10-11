@@ -103,7 +103,7 @@ my $stackreverse = 0;           # reverse stack order, switching merge end
 my $inverted = 0;               # icicle graph
 my $negate = 0;                 # switch differential hues
 my $titletext = "";             # centered heading
-my $titledefault = "";   # overwritten by --title
+my $titledefault = "Flame Graph";   # overwritten by --title
 my $titleinverted = "Icicle Graph"; #   "    "
 my $searchcolor = "rgb(230,0,230)"; # color for search highlighting
 my $help = 0;
@@ -207,7 +207,7 @@ if ($colors eq "io")  { $bgcolor1 = "#f8f8f8"; $bgcolor2 = "#e8e8e8"; }
         $self->{svg} .= <<SVG;
 <?xml version="1.0"$enc_attr standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg id="djdt-flamegraph" version="1.1" width="100%" onload="init(evt)" viewBox="0 0 $w $h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" width="100%" onload="init(evt)" viewBox="0 0 $w $h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
 SVG
     }
@@ -598,10 +598,11 @@ my $inc = <<INC;
 <![CDATA[
     var details, searchbtn, matchedtxt, svg;
     function init(evt) {
-        details = document.querySelector("#djdt-flamegraph #details");
-        searchbtn = document.querySelector("#djdt-flamegraph #search");
-        matchedtxt = document.querySelector("#djdt-flamegraph #matched");
-        svg = document.querySelector("#djdt-flamegraph");
+        console.log('yo')
+        details = document.getElementById("details").firstChild;
+        searchbtn = document.getElementById("search");
+        matchedtxt = document.getElementById("matched");
+        svg = document.getElementsByTagName("svg")[0];
         searching = 0;
     }
 
@@ -735,10 +736,10 @@ my $inc = <<INC;
         // XXX: Workaround for JavaScript float issues (fix me)
         var fudge = 0.0001;
 
-        var unzoombtn = document.querySelector("#djdt-flamegraph #unzoom");
+        var unzoombtn = document.getElementById("unzoom");
         unzoombtn.style["opacity"] = "1.0";
 
-        var el = document.querySelectorAll("#djdt-flamegraph g");
+        var el = document.getElementsByTagName("g");
         for(var i=0;i<el.length;i++){
             var e = el[i];
             var a = find_child(e, "rect").attributes;
@@ -777,10 +778,10 @@ my $inc = <<INC;
         }
     }
     function unzoom() {
-        var unzoombtn = document.querySelector("#djdt-flamegraph #unzoom");
+        var unzoombtn = document.getElementById("unzoom");
         unzoombtn.style["opacity"] = "0.0";
 
-        var el = document.querySelectorAll("#djdt-flamegraph g");
+        var el = document.getElementsByTagName("g");
         for(i=0;i<el.length;i++) {
             el[i].style["display"] = "block";
             el[i].style["opacity"] = "1";
@@ -791,7 +792,7 @@ my $inc = <<INC;
 
     // search
     function reset_search() {
-        var el = document.querySelectorAll("#djdt-flamegraph rect");
+        var el = document.getElementsByTagName("rect");
         for (var i=0; i < el.length; i++) {
             orig_load(el[i], "fill")
         }
@@ -814,7 +815,7 @@ my $inc = <<INC;
     }
     function search(term) {
         var re = new RegExp(term);
-        var el = document.querySelectorAll("#djdt-flamegraph g");
+        var el = document.getElementsByTagName("g");
         var matches = new Object();
         var maxwidth = 0;
         for (var i = 0; i < el.length; i++) {

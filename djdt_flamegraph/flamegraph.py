@@ -8,7 +8,7 @@ FLAMEGRAPH_PL = os.path.join(PATH_TO_THIS_DIR, 'flamegraph.pl')
 
 def stats_to_svg(stats):
     proc = subprocess.Popen(
-        args=[FLAMEGRAPH_PL],
+        args=[FLAMEGRAPH_PL, '--title', ' '],
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE,
         stderr=subprocess.STDOUT)
