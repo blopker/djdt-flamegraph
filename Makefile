@@ -1,4 +1,4 @@
-.PHONY: clean-pyc clean-build clean example
+.PHONY: clean-pyc clean-build clean example release
 
 define VERSION_SCR
 import pkg_resources
@@ -45,12 +45,9 @@ lint:
 test:
 	tox -e py27
 
-tag:
-	git tag $(VERSION)
-
 release:
 	@$(MAKE) test
-	@$(MAKE) tag
+	git tag $(VERSION)
 	git push --tags
 
 coverage:
