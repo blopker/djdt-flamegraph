@@ -33,3 +33,7 @@ Notes
 -----
 * ``ValueError at /: signal only works in main thread``: Flame graphs can only be generated in a single threaded server.
 * Flame graphs are disabled by default. You'll have to enable it by clicking the checkbox next to it in the Debug Toolbar.
+
+Development
+-----------
+This panel comes with an example Django app to test with.

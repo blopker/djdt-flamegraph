@@ -1,6 +1,8 @@
 import collections
 import signal
 
+from django.template import Template, Context
+
 from . import flamegraph
 
 try:
@@ -13,6 +15,21 @@ except ImportError as e:
     else:
         raise e
 
+template = r"""
+<template id="djdt-flamegraph-tpl">
+    {{ flamegraph|safe }}
+</template>
+<iframe id="djdt-flamegraph-iframe" style="width:100%;height:100%;" src="about:blank">
+</iframe>
+<script>
+    (function(){
+        var i = document.querySelector('#djdt-flamegraph-iframe');
+        var tpl = document.querySelector('#djdt-flamegraph-tpl');
+        i.contentWindow.document.write(tpl.innerHTML);
+    }())
+</script>
+"""
+
 
 class FlamegraphPanel(Panel):
     title = 'Flamegraph'
@@ -20,11 +37,15 @@ class FlamegraphPanel(Panel):
 
     @property
     def enabled(self):
-        return self.toolbar.request.COOKIES.get('djdt' + self.panel_id, 'off') == 'on'
+        key = 'djdt' + self.panel_id
+        return self.toolbar.request.COOKIES.get(key, 'off') == 'on'
 
     @property
     def content(self):
-        return self.get_stats()['flamegraph_svg']
+        ctx = {
+            'flamegraph': flamegraph.stats_to_svg(self.sampler.get_stats())
+        }
+        return Template(template).render(Context(ctx))
 
     def enable_instrumentation(self):
         self.sampler = Sampler()
@@ -34,12 +55,6 @@ class FlamegraphPanel(Panel):
 
     def process_response(self, request, response):
         self.sampler.stop()
-
-    def generate_stats(self, request, response):
-        flamegraph_svg = flamegraph.stats_to_svg(self.sampler.get_stats())
-        self.record_stats({
-            'flamegraph_svg': flamegraph_svg
-        })
 
 
 class Sampler(object):
