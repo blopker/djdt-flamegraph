@@ -25,8 +25,8 @@ Features
 
 Install
 -------
-* Add `djdt_flamegraph` to your requirements.txt.
-* Add `djdt_flamegraph.FlamegraphPanel` to `DEBUG_TOOLBAR_PANELS`
+* Add ``djdt_flamegraph`` to your ``requirements.txt``.
+* Add ``djdt_flamegraph.FlamegraphPanel`` to ``DEBUG_TOOLBAR_PANELS``.
 * Flame on!
 
 Note: Flamegraph is disabled by default. You'll have to enable it by clicking the checkbox next to it in the Debug Toolbar.
