@@ -34,6 +34,7 @@ test:
 	tox
 
 tag:
+	- tox
 	git tag $(VERSION)
 
 coverage:
