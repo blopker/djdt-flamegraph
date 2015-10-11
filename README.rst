@@ -1,11 +1,11 @@
 
 ===============================
-DjDT Flamegraph
+DjDT Flame Graph
 ===============================
 
 .. image:: https://raw.githubusercontent.com/23andMe/djdt-flamegraph/master/fireman.png
 
-Get a flamegraph of the current request, right in Django.
+Get a flame graph of the current request, right in Django.
 
 .. image:: https://travis-ci.org/23andMe/djdt-flamegraph.svg?branch=master
         :target: https://travis-ci.org/blopker/djdt-flamegraph
@@ -27,6 +27,9 @@ Install
 -------
 * Add ``djdt_flamegraph`` to your ``requirements.txt``.
 * Add ``djdt_flamegraph.FlamegraphPanel`` to ``DEBUG_TOOLBAR_PANELS``.
-* Flame on!
+* Run your server with ``python manage.py runserver --nothreading --noreload``
 
-Note: Flamegraph is disabled by default. You'll have to enable it by clicking the checkbox next to it in the Debug Toolbar.
+Notes
+-----
+* ``ValueError at /: signal only works in main thread``: Flame graphs can only be generated in a single threaded server.
+* Flame graphs are disabled by default. You'll have to enable it by clicking the checkbox next to it in the Debug Toolbar.

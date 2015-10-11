@@ -16,7 +16,7 @@ except ImportError as e:
 
 class FlamegraphPanel(Panel):
     title = 'Flamegraph'
-    template = 'debug_toolbar/panels/flamegraph.dtml'
+    template = 'djdt_flamegraph.html'
 
     @property
     def enabled(self):

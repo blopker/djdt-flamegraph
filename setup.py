@@ -16,12 +16,12 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     name='djdt_flamegraph',
-    version='0.2.0',
+    version='0.2.1',
     description='Flamegraphs for Django Debug Toolbar',
     long_description=readme + '\n\n' + history,
     author='Bo Lopker',
     author_email='blopker@23andme.com',
-    url='https://github.com/blopker/djdt_flamegraph',
+    url='https://github.com/23andme/djdt-flamegraph',
     packages=[
         'djdt_flamegraph',
     ],
