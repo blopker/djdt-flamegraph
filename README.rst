@@ -8,6 +8,8 @@ DjDT Flamegraph
 .. image:: https://img.shields.io/pypi/v/djdt_flamegraph.svg
         :target: https://pypi.python.org/pypi/djdt_flamegraph
 
+
+
 .. image:: https://raw.githubusercontent.com/23andMe/djdt-flamegraph/master/fireman.png
 
 Get a flamegraph of the current request, right in Django.
