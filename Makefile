@@ -51,7 +51,7 @@ tag:
 release:
 	@$(MAKE) test
 	@$(MAKE) tag
-	git push
+	git push --tags
 
 coverage:
 	coverage run --source djdt_flamegraph setup.py test
