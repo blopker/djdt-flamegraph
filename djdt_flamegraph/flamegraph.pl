@@ -598,7 +598,7 @@ my $inc = <<INC;
 <![CDATA[
     var details, searchbtn, matchedtxt, svg;
     function init(evt) {
-        details = document.querySelector("#djdt-flamegraph #details").firstChild;
+        details = document.querySelector("#djdt-flamegraph #details");
         searchbtn = document.querySelector("#djdt-flamegraph #search");
         matchedtxt = document.querySelector("#djdt-flamegraph #matched");
         svg = document.querySelector("#djdt-flamegraph");

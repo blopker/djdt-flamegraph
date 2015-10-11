@@ -1,6 +1,8 @@
 import collections
 import signal
 
+from django.template import Engine, Context
+
 from . import flamegraph
 
 try:
@@ -21,6 +23,10 @@ class FlamegraphPanel(Panel):
     @property
     def enabled(self):
         return self.toolbar.request.COOKIES.get('djdt' + self.panel_id, 'off') == 'on'
+
+    @property
+    def content(self):
+        return self.get_stats()['flamegraph_svg']
 
     def enable_instrumentation(self):
         self.sampler = Sampler()
