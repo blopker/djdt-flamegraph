@@ -598,7 +598,6 @@ my $inc = <<INC;
 <![CDATA[
     var details, searchbtn, matchedtxt, svg;
     function init(evt) {
-        console.log('yo')
         details = document.getElementById("details").firstChild;
         searchbtn = document.getElementById("search");
         matchedtxt = document.getElementById("matched");
