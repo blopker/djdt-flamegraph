@@ -11,6 +11,7 @@ def stats_to_svg(stats):
         args=[FLAMEGRAPH_PL, '--title', ' '],
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE,
-        stderr=subprocess.STDOUT)
+        stderr=subprocess.STDOUT,
+        universal_newlines=True)
     out, _ = proc.communicate(stats)
     return out

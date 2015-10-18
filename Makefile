@@ -7,6 +7,7 @@ endef
 
 VERSION ?= $(shell python -c '$(VERSION_SCR)')
 EXBIN = example/env/bin
+PYTHON ?= python
 
 all: test
 
@@ -14,7 +15,7 @@ example: example/env
 	$(EXBIN)/python example/manage.py runserver --nothreading --noreload
 
 example/env:
-	virtualenv example/env
+	virtualenv --python=$(PYTHON) example/env
 	$(EXBIN)/pip install -r example/requirements.txt
 	$(EXBIN)/pip install -e `pwd`
 	$(EXBIN)/python example/manage.py migrate
@@ -43,7 +44,7 @@ lint:
 	flake8 djdt_flamegraph tests
 
 test:
-	tox -e py27
+	tox
 
 release:
 	@$(MAKE) test
