@@ -49,7 +49,7 @@ test:
 release:
 	@$(MAKE) test
 	git tag $(VERSION)
-	git push --tags
+	git push --follow-tags 
 
 coverage:
 	coverage run --source djdt_flamegraph setup.py test
