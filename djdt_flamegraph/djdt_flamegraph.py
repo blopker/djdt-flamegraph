@@ -61,6 +61,7 @@ class FlamegraphPanel(Panel):
 
     def process_request(self, request):
         self.sampler.start()
+        return super().process_request(request)
 
     def process_response(self, request, response):
         self.sampler.stop()
