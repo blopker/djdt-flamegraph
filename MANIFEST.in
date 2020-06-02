@@ -2,6 +2,7 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 include djdt_flamegraph/flamegraph.pl
+include djdt_flamegraph/static/djdt_flamegraph/djdt_flamegraph.js
 
 recursive-include tests *
 recursive-exclude * __pycache__

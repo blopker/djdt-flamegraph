@@ -28,17 +28,12 @@ template = r"""
         init();
     </script>
 </template>
-<iframe id="djdt-flamegraph-iframe" style="width:100%;height:100%;" src="about:blank">
+
+<iframe id="djdt-flamegraph-iframe" style="width:100%;height:100%;">
 </iframe>
-<script>
-    (function(){
-        var i = document.querySelector('#djdt-flamegraph-iframe');
-        var tpl = document.querySelector('#djdt-flamegraph-tpl');
-        i.contentWindow.document.write(tpl.innerHTML);
-    }())
-</script>
 """
 
+from django.templatetags.static import static
 
 class FlamegraphPanel(Panel):
     title = 'Flamegraph'
@@ -51,20 +46,24 @@ class FlamegraphPanel(Panel):
 
     @property
     def content(self):
-        ctx = {
+        return Template(template).render(Context({
             'flamegraph': flamegraph.stats_to_svg(self.sampler.get_stats())
-        }
-        return Template(template).render(Context(ctx))
+        }))
+
+    @property
+    def scripts(self):
+        scripts = super().scripts
+        scripts.append(static("djdt_flamegraph/djdt_flamegraph.js"))
+        return scripts
 
     def enable_instrumentation(self):
         self.sampler = Sampler()
 
     def process_request(self, request):
         self.sampler.start()
-        return super().process_request(request)
-
-    def process_response(self, request, response):
+        response =  super().process_request(request)
         self.sampler.stop()
+        return response
 
 
 class Sampler(object):
